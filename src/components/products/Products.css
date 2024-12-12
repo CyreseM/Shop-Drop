@@ -6,13 +6,16 @@
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 10px;
+  justify-content: center;
 }
 
 .product-container {
   padding-top: 10px;
   margin: 5px;
-  min-width: 400px;
+  /* min-width: 400px; */
+  min-width: 280px;
   height: 350px;
   display: flex;
   align-items: center;
