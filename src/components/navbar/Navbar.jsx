@@ -1,8 +1,11 @@
 import "./Navbar.css";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function Navbar() {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalItems = cartItems.length;
   return (
     <nav className="navbar-container">
       <div className="navbar-wrapper">
@@ -14,11 +17,13 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="navbar-center">
-          <h1 className="navbar-logo">
-            Shop & Drop <span>.</span>
-          </h1>
-        </div>
+        <Link to="/">
+          <div className="navbar-center">
+            <h1 className="navbar-logo">
+              Shop & Drop <span>.</span>
+            </h1>
+          </div>
+        </Link>
 
         <div className="navbar-right">
           <Link to="/register">
@@ -30,10 +35,14 @@ function Navbar() {
             <div className="navbar-menuItem">Login</div>
           </Link>
 
-          <div className="navbar-menuItem">
-            <MdOutlineShoppingCart className="icon" />{" "}
-            <span className="cart-badge"></span>
-          </div>
+          <Link to="/cart">
+            <div className="navbar-menuItem">
+              <MdOutlineShoppingCart className="icon" />{" "}
+              {totalItems > 0 && (
+                <span className="cart-badge">{totalItems}</span>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
     </nav>
